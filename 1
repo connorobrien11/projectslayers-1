@@ -1,0 +1,12 @@
+getgenv().imsotired = false
+local banana
+banana = hookmetamethod(game, "__namecall", function(self, ...)
+local method = getnamecallmethod()
+local args = {...}
+
+if not checkcaller() and self.Name == "Sun_Damage" and method == "FireServer" and getgenv().imsotired == true then
+    return
+end
+
+return banana(self, ...)
+end)
